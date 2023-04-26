@@ -1,0 +1,284 @@
+$primary-color: #FFEFE7;
+$secondary-color: #FFDAC6;
+$tertiary-color: #BABD8D;
+$primary-text-color: #7C6A0A;
+$secodary-text-color: #BABD8D;
+$orange: #e86424;
+$background: #FA9500;
+$font-stack: 'Nunito', sans-serif;
+$shadow-box: 0 0 10px 3px rgba(0, 0, 0, 0.05);
+
+@mixin flexCenter($justifyContent: null, $alignItem: null){
+    display: flex;
+    justify-content: $justifyContent;
+    align-items: $alignItem;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.sub-title,
+.title {
+    color: $primary-text-color;
+}
+
+.title {
+    font-size: 60px;
+}
+
+.sub-title {
+    font-size: 50px;
+    font-weight: 500;
+    margin-bottom: 40px;
+}
+
+.logo-text {
+    font-size: 30px;
+}
+
+.white-text {
+    color: white;
+}
+
+body {
+    font-family: $font-stack;
+    @include flexCenter(center);
+
+    svg path {
+        stroke: currentColor;
+    }
+
+    .general-content {
+        border-radius: 10px;
+        overflow: hidden;
+        margin: 10px 0;
+        width: 1300px;
+        background-color: $primary-color;
+        box-shadow: $shadow-box;
+    }
+}
+
+nav {
+    width: 100%;
+    height: 82px;
+    background: $primary-color;
+    @include flexCenter(space-between, center);
+    padding: 0 30px;
+
+    p {
+        font-size: 1.5em;
+    }
+
+    .social-media-head {
+        @include flexCenter();
+        gap: 15px;
+        button {
+            color: $primary-text-color;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+        }
+    }
+}
+
+main {
+    background: $primary-color;
+    padding: 73px;
+
+    article {
+        margin-bottom: 35px;
+        @include flexCenter(center);
+        .impact {
+            width: 60%;
+            @include flexCenter();
+            flex-direction: column;
+            padding: 45px 0;
+            gap: 51px;
+
+            p {
+                color: $primary-text-color;
+                font-weight: 400;
+                line-height: 32.5px;
+                font-size: 24px;
+            }
+
+            button {
+                @include flexCenter(center, center); 
+                gap: 10px;
+                width: 200px;
+                height: 50px;
+                border: none;
+                font-size: 18px;
+                background-color: $background;
+                color: white;
+                font-weight: 600;
+                border-radius: 50px;
+                cursor: pointer
+            }
+
+            button:active {
+                background-color: #be7200;
+            }
+        }
+
+        .image-section {
+            width: 40%;
+            @include flexCenter(flex-end);
+            box-shadow: $shadow-box;
+
+            img {
+                object-fit: cover;
+                height: 686px;
+                width: 100%;
+                border-radius: 10px;
+            }
+        }
+    }
+}
+
+div.products-section {
+    .health-care {
+        .product-card {
+            @include flexCenter();
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .card {
+            width: 30%;
+            transition: 0.3s;
+            height: 520px;
+            background-color: $secondary-color;
+            border-radius: 6px;
+            box-shadow: $shadow-box;
+            margin-bottom: 75px;
+            color: $primary-text-color;
+
+            .svg-content {
+                @include flexCenter(space-between);
+                padding: 15px;
+                svg{
+                    cursor: pointer;
+                }
+            }
+
+            .img-content {
+                @include flexCenter(center);
+
+                img {
+                    width: 75%;
+                    object-fit: cover;
+                    height: 300px;
+                    border-radius: 6px;
+                }
+            }
+
+            .text-product-content {
+                padding: 16px 40px;
+                h3{
+                    font-size: 25px
+                }
+            }
+            &:hover{
+                transform: translateY(-15px);
+                box-shadow: 0px 0px 24px 14px rgb(255 255 255 / 50%);
+            }
+        }
+
+    }
+    .furniture {
+        @extend .health-care;
+        .card{
+            color: white;
+            background-color: $tertiary-color;
+        }
+    }
+}
+
+div.info-section{
+    .why-us{
+        margin-bottom: 30px;
+        color: $orange;
+        .why-us-content{
+            padding: 55px;
+            @include flexCenter(space-between);
+            .earth{
+                @include flexCenter(center,center);
+            }
+            .innovation{
+                @extend .earth
+            }
+            p{
+                font-size: 30px;
+                text-align: center;
+            }
+        }
+    }
+    .gallery{
+        margin-bottom: 30px;
+        .gallery-content{
+            @include flexCenter(space-between);
+        }
+        .gallery-image{
+            width: 30%;
+            height: 350px;
+            border-radius: 16px;
+            overflow: hidden;
+            img{
+                object-fit: cover;
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+    .location{
+        color: $orange;
+        .maps{
+            @include flexCenter(center,center);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: $shadow-box;
+            img{
+                width: 100%;
+                object-fit: cover;
+            }
+        }
+        .address-content{
+            h3{
+                font-size: 35px;
+                margin-top: 20px;
+                font-weight: 200;
+            }
+            p{
+                font-size: 25px;
+                margin-top: 10px;
+            }
+        }
+    }
+}
+
+footer {
+    width: 100%;
+    height: auto;
+    background-color: $background;
+    padding: 40px;
+    @include flexCenter();
+    flex-direction: column;
+    gap: 15px;
+    h3{
+        font-size: 30px;
+    }
+    p{
+        font-size: 20px;
+    }
+    .social-media{
+        @include flexCenter(center);
+        gap:15px;
+        img{
+            cursor: pointer;
+        }
+    }
+}
